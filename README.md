@@ -9,8 +9,15 @@ Reach out to Kyle (@UpInYourVizness) with questions!
 #### Installation
 
 1. Clone this repository to your local machine
-2. Navigate to the *frontend* folder using your preferred command line
-3. Run 'npm install' (no quotes)
+2. **API**
+   * From the repo root folder run: 
+     * python -m venv venv
+     * source venv/Scripts/activate
+       * This step may vary based on your CLI!
+     * pip install -r requirements.txt
+3. **Frontend**
+   * navigate to frontend folder
+     * npm install
 
 ---
 

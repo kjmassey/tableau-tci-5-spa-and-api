@@ -1,10 +1,8 @@
 import tableauserverclient as TSC
-
-UID = 'YOUR_USER_ID'
-PW = 'YOUR_PASSWORD'
+from tableau_functions.creds import UID, PW, SITE
 
 def get_server_and_auth():
-    tab_auth = TSC.TableauAuth(UID,PW,site='YOUR_SITE')
+    tab_auth = TSC.TableauAuth(UID,PW,site=SITE)
     server = TSC.Server('https://10ax.online.tableau.com', use_server_version=True)
 
     return server, tab_auth
