@@ -30,8 +30,7 @@ def create_new_user(req_data):
     server, tab_auth = get_server_and_auth()
 
     with server.auth.sign_in(tab_auth):
-        new_user_item = TSC.UserItem(name=req_data.get('userEmail'))
-        new_user_item.site_role = 'Viewer'
+        new_user_item = TSC.UserItem(name=req_data.get('userEmail'),site_role='Viewer')
         new_user = server.users.add(new_user_item)
 
         return new_user.__dict__
