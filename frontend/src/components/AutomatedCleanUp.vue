@@ -33,16 +33,26 @@
         <div class="text-h6 pb-4">
           The following workbooks match your search:
         </div>
+
         <div
-          class="text-body"
+          class="text-subtitle-1 d-flex justify-space-between py-2 px-2"
           v-for="(wb, index) in responseObj"
-          :key="wb - { index }"
+          :key="wb.name"
+          :class="[index % 2 == 0 ? '' : 'shade-row']"
         >
-          <a :href="wb._webpage_url" target="_blank">{{ wb.name }}</a>
+          <span>
+            <a :href="wb._webpage_url" target="_blank">{{ wb.name }}</a></span
+          >
+
+          <span> {{ wb._updated_at.split("+")[0] }} </span>
+          <div>
+            <v-btn color="red" density="compact">Delete</v-btn>
+          </div>
         </div>
       </v-card-text>
       <v-card-actions>
-        <div class="w-100 d-flex justify-end">
+        <div class="w-100 d-flex justify-space-between">
+          <v-btn color="red" variant="outlined">Delete All Matches</v-btn>
           <v-btn variant="outlined" @click="showFoundDialog = false"
             >Close</v-btn
           >
@@ -93,7 +103,11 @@ export default {
 
 <style scoped>
 .result-dialog {
-  width: 600px;
+  width: 750px;
+}
+
+.shade-row {
+  background-color: lightgrey;
 }
 
 .cal-picker {
