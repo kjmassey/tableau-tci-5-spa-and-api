@@ -94,15 +94,11 @@ def filter_datasources_update_before_python_filter(date):
         # The results should be cast to a list
         # POTENTIAL PERFORMANCE IMPACTS
 
-        all_datasources = list(TSC.Pager(server.datasources))
+        # TSC.Pager is iterable, and we can filter within a list comprehension.
+        # This should only be used if the filter is not available via
+        # TSC.RequestOptions or django-style filtering
+        return [d for d in TSC.Pager(server.datasources) if d.updated_at <= dt]
 
-        # 'Lambda' functions in Python are basically a syntax for adhoc operations
-        # Filter() takes a lambda for each item in an iterable/list, and the iterable/list
-
-        datasources = list(
-            filter(lambda x: x.updated_at <= dt, all_datasources))
-
-        return datasources
 
 
 def get_items_from_csv(csv_path):
