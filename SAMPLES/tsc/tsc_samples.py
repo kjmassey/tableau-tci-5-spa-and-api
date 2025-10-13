@@ -301,11 +301,11 @@ def assign_group_permissions(group_luid, project_name):
     tab_auth, server = get_tab_auth_server()
 
     with server.auth.sign_in(tab_auth):
-        projects = list(TSC.Pager(server.projects))
-        project = list(filter(lambda x: x.name == project_name, projects))[0]
+        # Will raise a StopIteration Exception if no match is found.
+        project = next(p for p in TSC.Pager(server.projects) if p.name == project_name)
 
-        groups = list(TSC.Pager(server.groups))
-        group = list(filter(lambda x: x._id == group_luid, groups))[0]
+        # Will raise a StopIteration Exception if no match is found.
+        group = next(g for g in TSC.Pager(server.groups) if g.id == group_luid)
 
         updated_project = server.projects.update_permissions(project, [TSC.PermissionsRule(
             grantee=group,
