@@ -10,6 +10,9 @@ from datetime import datetime, timezone
 
 
 def get_workbooks():
+    """
+    Returns the first page (default 100) of workbooks.
+    """
     # There is no request body to sign in, it's handled here...
     tab_auth = TSC.PersonalAccessTokenAuth(
         'YOUR_PAT_NAME', 'YOUR_PAT_SECRET', site_id='YOUR_SITE_NAME')
