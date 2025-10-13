@@ -58,7 +58,7 @@ def filter_workbooks_by_name_req_options(wb_name):
 
 def filter_workbooks_by_name_django_style(wb_name):
     '''
-    Retrieve a filtered list of workbooks where name = wb_name, using django-style filtering -- YMMV, this method currently only filters the first page of results, be careful!
+    Retrieve a filtered list of workbooks where name = wb_name, using django-style filtering
     '''
 
     tab_auth = TSC.PersonalAccessTokenAuth(
